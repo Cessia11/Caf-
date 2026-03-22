@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36 Edg/146.0.0.0" version="29.6.4">
+  <diagram name="Página-1" id="rSFVnsv0TxHwUkLVTPOh">
+    <mxGraphModel dx="1915" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-33" edge="1" parent="1" source="IAusGwO1mX-pPM0hJaO_-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="IAusGwO1mX-pPM0hJaO_-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-5" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="&lt;span data-path-to-node=&quot;6,0,1,0&quot;&gt;Cliente (Envía feedback por WhatsApp)&lt;/span&gt;&lt;span data-path-to-node=&quot;6,0,1,1&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;6&quot;&gt;&lt;/sup&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="90" width="80" x="-30" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-9" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=11;labelBackgroundColor=default;fontColor=light-dark(#000000,#FFFFFF);" value="&lt;pre class=&quot;tw-data-text tw-text-large tw-ta&quot; data-placeholder=&quot;Traducción&quot; id=&quot;tw-target-text&quot; role=&quot;text&quot; tabindex=&quot;-1&quot; data-ved=&quot;2ahUKEwixrqntg6-TAxVsnGoFHZUmAxIQ3ewLegQIDBAW&quot; dir=&quot;ltr&quot; aria-label=&quot;Texto traducido: Diagrama de contexto del sistema&quot; style=&quot;line-height: 36px; border: none; padding: 2px 0.14em 2px 0px; position: relative; margin: -2px 0px; resize: none; font-family: inherit; overflow: hidden; width: 270px; text-wrap-mode: wrap; overflow-wrap: break-word; outline: 0px;&quot;&gt;&lt;span class=&quot;Y2IQFc&quot; lang=&quot;es&quot;&gt;&lt;font&gt;Diagrama de contexto del sistema&lt;/font&gt;&lt;/span&gt;&lt;/pre&gt;" vertex="1">
+          <mxGeometry height="30" width="190" x="340" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-10" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="&lt;span data-path-to-node=&quot;6,1,1,0&quot;&gt;Gerente de &quot;Café de El Salvador&quot; (Consulta el Dashboard)&lt;/span&gt;&lt;span data-path-to-node=&quot;6,1,1,1&quot;&gt;&lt;span class=&quot;citation-238 citation-end-238&quot;&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;7&quot;&gt;&lt;/sup&gt;&lt;sup class=&quot;superscript&quot; data-turn-source-index=&quot;7&quot;&gt;&lt;/sup&gt;&lt;/span&gt;&lt;/span&gt;&lt;span data-path-to-node=&quot;6,1,1,2&quot;&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="90" width="60" x="760" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Modelo IA Local" vertex="1">
+          <mxGeometry height="80" width="120" x="354" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-34" edge="1" parent="1" source="IAusGwO1mX-pPM0hJaO_-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="IAusGwO1mX-pPM0hJaO_-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Twilio (Puente de mensajería) y LLM API&amp;nbsp;" vertex="1">
+          <mxGeometry height="80" width="120" x="160" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-36" edge="1" parent="1" source="IAusGwO1mX-pPM0hJaO_-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="IAusGwO1mX-pPM0hJaO_-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-31" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Sistema central: Sistema de analisis de sentimiento&amp;nbsp;&lt;div&gt;Nuestra app&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="170" x="520" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="IAusGwO1mX-pPM0hJaO_-37" edge="1" parent="1" source="IAusGwO1mX-pPM0hJaO_-27" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="160" />
+            </Array>
+            <mxPoint x="474" y="165" as="sourcePoint" />
+            <mxPoint x="600" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
