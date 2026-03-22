@@ -39,7 +39,7 @@ Exponer el puerto local usando Ngrok: `ngrok http 8000`. Configurar la URL resul
 
 ## 3. Matriz de Valor (Decisiones de Negocio)
 
-1.  **Decisión Operativa Inmediata:** Si se detecta un pico de sentimiento negativo en "Tiempos" en horas pico, se habilita una segunda caja o se reasigna personal a la barra.
+1.  **Decisión Operativa Inmediata:** Si se detecta un alto de sentimiento negativo en "Tiempos" en horas altas, se habilita una segunda caja o se reasigna personal a la barra.
 2.  **Gestión de Calidad:** Ante tendencias de quejas sobre "sabor" o "temperatura", se ordena una calibración inmediata de máquinas o revisión de proveedores.
 3.  **Estrategia de Fidelización:** Identificación de clientes frecuentes con feedback positivo para el envío de cupones de agradecimiento y fidelización.
 
@@ -64,7 +64,7 @@ Muestra la interacción global entre el Cliente, el Sistema de Feedback y el Ger
 ### Nivel 2: Contenedores
 Detalla la comunicación entre el Sandbox de Twilio, el API en FastAPI, el Modelo de IA Local, la base de datos MongoDB y el Dashboard en React.
 
-*(Nota: Los diagramas se encuentran adjuntos en la carpeta /diagramas del repositorio).*
+*(Nota: Los diagramas se encuentran adjuntos en la carpeta /diagramas).*
 
 ---
 
