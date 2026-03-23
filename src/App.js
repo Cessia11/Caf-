@@ -11,10 +11,10 @@ function App() {
 
   const fetchData = async () => {
     try {
-      // Conexión a los endpoints que creamos en el Backend [cite: 50]
-      const resMensajes = await axios.get('http://127.0.0.1:8000/api/mensajes');
-      const resSentimientos = await axios.get('http://127.0.0.1:8000/api/sentimientos');
-      const resTemas = await axios.get('http://127.0.0.1:8000/api/temas');
+      // Conexión a los endpoints públicos en AWS
+      const resMensajes = await axios.get('http://3.141.244.88:8000/api/mensajes');
+      const resSentimientos = await axios.get('http://3.141.244.88:8000/api/sentimientos');
+      const resTemas = await axios.get('http://3.141.244.88:8000/api/temas');
       
       setMensajes(resMensajes.data);
       // Ajustamos los datos para que Recharts los entienda
@@ -39,7 +39,7 @@ function App() {
       </header>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
-        {/* 1. Gráfico de Pastel de Sentimientos [cite: 52] */}
+        {/* 1. Gráfico de Pastel de Sentimientos */}
         <div style={{ background: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
           <h3>Distribución de Sentimientos</h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -53,7 +53,7 @@ function App() {
           </ResponsiveContainer>
         </div>
 
-        {/* 2. Gráfico de Barras de Temas [cite: 53] */}
+        {/* 2. Gráfico de Barras de Temas */}
         <div style={{ background: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
           <h3>Temas Frecuentes</h3>
           <ResponsiveContainer width="100%" height={300}>
