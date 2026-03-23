@@ -1,10 +1,10 @@
-# ☕ Sistema de Análisis de Feedback - Café de El Salvador
+# Sistema de Análisis de Feedback - Café de El Salvador
 
 Este proyecto es una solución integral de **Inteligencia de Negocios (BI)** que captura el feedback de clientes a través de WhatsApp, procesa el sentimiento y la categoría mediante un modelo de IA local (Machine Learning), y visualiza métricas en tiempo real en un dashboard profesional alojado en la nube.
 
 ---
 
-##  1. Infraestructura y Despliegue (Cloud Stack)
+## 1. Infraestructura y Despliegue (Cloud Stack)
 
 A diferencia de una ejecución local básica, este sistema está desplegado en una arquitectura de nivel empresarial:
 
@@ -19,7 +19,7 @@ A diferencia de una ejecución local básica, este sistema está desplegado en u
 
 ---
 
-##  2. Configuración Técnica
+## 2. Configuración Técnica
 
 ### Dependencias Principales
 El sistema requiere las siguientes librerías para su correcto funcionamiento en el entorno virtual (`venv`):
@@ -31,7 +31,7 @@ El backend se conecta a la base de datos mediante una URI de MongoDB Atlas:
 
 ---
 
-##  3. Customer Journey Map (End-to-End)
+## 3. Customer Journey Map (End-to-End)
 
 1.  **Trigger:** El cliente finaliza su café y escanea un código QR en la mesa.
 2.  **Interacción:** Envía un mensaje por WhatsApp (ej. *"La semita estaba rica pero el café tardó mucho"*).
@@ -54,8 +54,32 @@ El backend se conecta a la base de datos mediante una URI de MongoDB Atlas:
 
 ---
 
-##  5. Estrategia de IA y Resiliencia
+## 5. Estrategia de IA y Resiliencia
 
 * **Modelo de Machine Learning:** Se utiliza un clasificador **LinearSVC** entrenado localmente. Esto elimina la dependencia de APIs externas, reduce costos y garantiza latencias de respuesta menores a 100ms.
 * **Robustez con PM2:** Se implementó **PM2** para monitorear los procesos de Node.js y Python. Si un proceso falla, el gestor lo reinicia automáticamente en milisegundos.
-* **Seguridad de Red:** Configuración de **Security Groups en AWS** y **Network Access en MongoDB** para permitir el
+* **Seguridad de Red:** Configuración de **Security Groups en AWS** y **Network Access en MongoDB** para permitir el tráfico seguro entre servicios.
+
+---
+
+## 6. Stack Tecnológico Final
+
+* **Backend:** Python 3.12 / FastAPI (Asíncrono).
+* **Frontend:** React.js / Recharts (Dashboard Dinámico).
+* **Base de Datos:** MongoDB Atlas (NoSQL Cloud).
+* **IA:** Scikit-Learn / Joblib (Inferencia Local).
+* **DevOps:** AWS EC2 / PM2 / GitHub.
+
+  ---
+  
+## 7. Cómo probar el sistema en vivo (Demo)
+
+El sistema se encuentra desplegado en AWS y conectado al Sandbox de Twilio. Para interactuar con la Inteligencia Artificial y ver los resultados en el Dashboard, siga estos pasos:
+
+1. **Conectar al Sandbox:** Envíe un mensaje de WhatsApp al número oficial de pruebas de Twilio: **whatsapp:+14155238886**.
+2. **Código de Activación:** El primer mensaje debe ser exactamente el siguiente código para enlazar su sesión:
+**`join source-provide`**
+3. **Confirmación:** Recibirá un mensaje de Twilio indicando *"You are all set!"*.
+4. **Enviar Feedback:** Escriba un mensaje natural simulando ser un cliente de la cafetería. 
+
+
