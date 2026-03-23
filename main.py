@@ -28,7 +28,7 @@ cliente_mongo = MongoClient(os.getenv("MONGO_URI"))
 db = cliente_mongo["cafe_el_salvador"]
 coleccion_feedback = db["mensajes"]
 
-# 3. Cargar mis Propios modelos de IA entrenados en Colab
+# 3. Cargando mis Propios modelos de IA entrenados en Colab
 print("Cargando IA local...")
 modelo_sentimiento = joblib.load('ia_sentimiento.pkl')
 modelo_tema = joblib.load('ia_tema.pkl')
@@ -53,14 +53,14 @@ def analizar_mensaje_ia(texto):
             "auditoria": {
                 "id_ejecucion": str(uuid.uuid4()),
                 "latencia_ms": latencia,
-                "version_prompt": "ml-local-v1" # Trazabilidad actualizada
+                "version_prompt": "ml-local-v1" 
             }
         }
     except Exception as e:
         print(f"Error en análisis local: {e}")
         return {"valido": False}
 
-# --- RUTA 1: WEBHOOK (Recibe de WhatsApp) ---
+# --- RUTA 1: Recibe de WhatsApp ---
 @app.post("/webhook/whatsapp")
 async def webhook_twilio(request: Request):
     formulario = await request.form()
