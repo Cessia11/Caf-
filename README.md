@@ -1,76 +1,61 @@
-# Sistema de Análisis de Feedback - Café de El Salvador
+# ☕ Sistema de Análisis de Feedback - Café de El Salvador
 
-Este proyecto es una solución integral de inteligencia de negocios que captura el mensaje del cliente a través de WhatsApp, procesa el sentimiento y la categoría del mensaje mediante un modelo de IA local, y visualiza métricas en tiempo real para la toma de decisiones gerenciales.
-
----
-
-## 1. Configuración y Ejecución Local
-
-### Backend (FastAPI)
-1. Instalar dependencias:
-   `pip install fastapi uvicorn pymongo python-dotenv scikit-learn joblib twilio`
-2. Configurar archivo `.env`:
-   `MONGO_URI==mongodb+srv://esquivelnohemy01_db_user:3Xxe0bkvByKlIvoR@cluster01.63jizie.mongodb.net/?appName=Cluster01`
-3. Ejecutar servidor:
-   `python -m uvicorn main:app --reload` (Puerto 8000)
-
-### Frontend (React)
-1. Entrar a la carpeta: `cd cafe-dashboard`
-2. Instalar y ejecutar:
-   `npm install`
-   `npm start` (Puerto 3000)
-
-### Conexión Twilio (Webhook)
-Exponer el puerto local usando Ngrok: `ngrok http 8000`. Configurar la URL resultante en la consola de Twilio: `https://tu-url.ngrok-free.app/webhook/whatsapp`.
+Este proyecto es una solución integral de **Inteligencia de Negocios (BI)** que captura el feedback de clientes a través de WhatsApp, procesa el sentimiento y la categoría mediante un modelo de IA local (Machine Learning), y visualiza métricas en tiempo real en un dashboard profesional alojado en la nube.
 
 ---
 
-## 2. Customer Journey Map (End-to-End)
+##  1. Infraestructura y Despliegue (Cloud Stack)
 
-* **Punto de Contacto (Trigger):** El cliente termina su consumo y ve un código QR en su ticket o mesa: *"¿Cómo estuvo tu café hoy? Escríbenos al WhatsApp"*.
-* **Interacción:** El cliente envía un mensaje natural (ej. "Me encantó la semita, pero el café tardó mucho").
-* **Captura (Backend):** Twilio intercepta el mensaje y lo envía vía Webhook a nuestro servidor de manera instantánea.
-* **Ingesta de Datos:** El sistema guarda el mensaje crudo en **MongoDB Atlas** para auditoría, adjuntando timestamp y número de remitente.
-* **Análisis con IA (El "Cerebro"):** El servidor procesa el texto con un modelo de clasificación local. La IA extrae el **Sentimiento** (Positivo, Negativo, Neutral) y la **Categoría** (Servicio, Calidad, Tiempos, Limpieza).
-* **Visualización (Dashboard):** Los datos procesados alimentan gráficos dinámicos en React.
-* **Acción:** El gerente revisa el dashboard y toma decisiones operativas basadas en datos reales.
+A diferencia de una ejecución local básica, este sistema está desplegado en una arquitectura de nivel empresarial:
 
----
+* **Servidor Cloud:** AWS EC2 (Ubuntu Server 24.04 LTS).
+* **Gestor de Procesos:** PM2 (Garantiza disponibilidad 24/7 y reinicio automático de servicios).
+* **Base de Datos:** MongoDB Atlas (Cluster NoSQL en la nube con acceso global).
+* **Gateway:** Twilio WhatsApp Business API.
 
-## 3. Matriz de Valor (Decisiones de Negocio)
-
-1.  **Decisión Operativa Inmediata:** Si se detecta un alto de sentimiento negativo en "Tiempos" en horas altas, se habilita una segunda caja o se reasigna personal a la barra.
-2.  **Gestión de Calidad:** Ante tendencias de quejas sobre "sabor" o "temperatura", se ordena una calibración inmediata de máquinas o revisión de proveedores.
-3.  **Estrategia de Fidelización:** Identificación de clientes frecuentes con feedback positivo para el envío de cupones de agradecimiento y fidelización.
+### Estado de los Servicios en Producción
+* **Backend (API & Bot):** Running on `http://3.141.244.88:8000`
+* **Frontend (Dashboard):** Running on `http://3.141.244.88:3000`
 
 ---
 
-## 4. Estrategia de IA y Prompts
+##  2. Configuración Técnica
 
-Para este proyecto se utilizó una estrategia de **Zero-Shot Prompting con Restricción de Esquema Estricta**:
+### Dependencias Principales
+El sistema requiere las siguientes librerías para su correcto funcionamiento en el entorno virtual (`venv`):
+`pip install fastapi uvicorn pymongo python-dotenv scikit-learn joblib twilio python-multipart`
 
-* **Instrucción de Rol:** Se define al modelo como "Analista de Calidad de Café de El Salvador".
-* **Formato JSON Estricto:** Se obliga a la IA a responder únicamente en formato JSON para evitar errores de parseo en el backend.
-* **Gobernanza de Datos:** Se delimitan las categorías (Servicio, Calidad, Precio, etc.) para mantener la integridad referencial en las gráficas.
-* **Resiliencia (Modelo Local):** Para garantizar disponibilidad 24/7 y evitar límites de cuota de APIs externas (como Google Gemini), se entrenó un modelo local de **Machine Learning (SVM)** basado en el dataset generado por los prompts, asegurando latencias de milisegundos.
-
----
-
-##  5. Arquitectura del Sistema (Diagramas C4)
-
-### Nivel 1: Contexto
-Muestra la interacción global entre el Cliente, el Sistema de Feedback y el Gerente.
-
-### Nivel 2: Contenedores
-Detalla la comunicación entre el Sandbox de Twilio, el API en FastAPI, el Modelo de IA Local, la base de datos MongoDB y el Dashboard en React.
-
-*(Nota: Los diagramas se encuentran adjuntos en la carpeta /diagramas).*
+### Variables de Entorno (.env)
+El backend se conecta a la base de datos mediante una URI de MongoDB Atlas:
+`MONGO_URI=mongodb+srv://esquivelnohemy01_db_user:3Xxe0bkvByKlIvoR@cluster01.63jizie.mongodb.net/`
 
 ---
 
-## Stack Tecnológico
-* **Backend:** Python / FastAPI
-* **Frontend:** React.js / Recharts
-* **Base de Datos:** MongoDB Atlas (NoSQL)
-* **IA:** Scikit-Learn (Modelo de Clasificación Local)
-* **Infraestructura:** Twilio API / Ngrok
+##  3. Customer Journey Map (End-to-End)
+
+1.  **Trigger:** El cliente finaliza su café y escanea un código QR en la mesa.
+2.  **Interacción:** Envía un mensaje por WhatsApp (ej. *"La semita estaba rica pero el café tardó mucho"*).
+3.  **Captura (Cloud Webhook):** Twilio intercepta el mensaje y lo envía vía Webhook a nuestra **IP de AWS**: `/webhook/whatsapp`.
+4.  **Ingesta:** El sistema guarda el mensaje en **MongoDB Atlas** para auditoría y trazabilidad.
+5.  **Cerebro de IA (Inferencia Local):** Un modelo de **Machine Learning (SVM)** procesa el texto extrayendo:
+    * **Sentimiento:** Positivo, Negativo, Neutral.
+    * **Categoría:** Servicio, Calidad, Tiempos, Limpieza.
+6.  **Visualización:** El Dashboard en **React** consume la API y actualiza los gráficos automáticamente cada 5 segundos.
+
+---
+
+## 4. Matriz de Valor y Decisiones Gerenciales
+
+| Hallazgo en Dashboard | Decisión de Negocio (Insight) | Impacto |
+| :--- | :--- | :--- |
+| Alta frecuencia de Negativo en **"Tiempos"** | Reasignación de personal a barra en horas pico. | Mejora en satisfacción del cliente. |
+| Quejas recurrentes en **"Calidad"** | Calibración de máquinas o revisión de proveedores. | Consistencia del producto premium. |
+| Sentimiento Positivo constante | Identificación de promotores para fidelización. | Aumento de clientes recurrentes. |
+
+---
+
+##  5. Estrategia de IA y Resiliencia
+
+* **Modelo de Machine Learning:** Se utiliza un clasificador **LinearSVC** entrenado localmente. Esto elimina la dependencia de APIs externas, reduce costos y garantiza latencias de respuesta menores a 100ms.
+* **Robustez con PM2:** Se implementó **PM2** para monitorear los procesos de Node.js y Python. Si un proceso falla, el gestor lo reinicia automáticamente en milisegundos.
+* **Seguridad de Red:** Configuración de **Security Groups en AWS** y **Network Access en MongoDB** para permitir el
